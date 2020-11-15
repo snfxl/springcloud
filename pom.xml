@@ -13,6 +13,9 @@
         <module>cloud-provider-payment8001</module>
         <module>cloud-constumer-order80</module>
         <module>cloud-api-common</module>
+        <module>cloud-eureka-server7001</module>
+        <module>cloud-eureka-server7002</module>
+        <module>cloud-provider-payment8002</module>
     </modules>
 
     <!-- 统一管理jar包 -->
@@ -52,8 +55,9 @@
                 <groupId>com.alibaba.cloud</groupId>
                 <artifactId>spring-cloud-alibaba-dependencies</artifactId>
                 <version>2.1.0.RELEASE</version>
+                <type>pom</type>
+                <scope>import</scope>
             </dependency>
-
             <!-- mybatis-->
             <dependency>
                 <groupId>org.mybatis.spring.boot</groupId>

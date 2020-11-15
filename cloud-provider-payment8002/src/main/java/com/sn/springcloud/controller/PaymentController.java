@@ -5,12 +5,9 @@ import com.sn.springcloud.entities.Payment;
 import com.sn.springcloud.service.PaymentService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.cloud.client.ServiceInstance;
-import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
-import java.util.List;
 
 /**
  * @Author: shinan
@@ -31,37 +28,6 @@ public class PaymentController {
      */
     @Value("${server.port}")
     private String serverPort;
-
-    /**
-     * 服务发现 对于注册进eureka中的微服务，可以通过服务发现来获得该服务的信息
-     * discoveryClient中保存着当前服务中心注册的所有的服务的信息
-     */
-    @Resource
-    private DiscoveryClient discoveryClient;
-
-    /**
-     * 获取当前服务注册中心所有微服务的信息
-     * @return 返回当前服务注册中心所有的微服务信息
-     */
-    @GetMapping("/payment/discovery")
-    public Object discovery(){
-
-        //1.discoveryClient.getServices() 获取当前服务注册中心中的所有服务
-        List<String> services = discoveryClient.getServices();
-        for(String service: services){
-            log.info("*****service: " + service);
-        }
-
-        //2.discoveryClient.getInstances("CLOUD-ORDER-SERVICE")
-        // 获取服务名称为CLOUD-ORDER-SERVICE的所有信息 例如 服务id 本机ip 端口号 访问地址
-        List<ServiceInstance> instances = discoveryClient.getInstances("CLOUD-ORDER-SERVICE");
-        for(ServiceInstance serviceInstance:instances){
-            log.info(serviceInstance.getServiceId() + "\t" + serviceInstance.getHost()
-                    + "\t" + serviceInstance.getPort() + "\t" + serviceInstance.getUri());
-        }
-        return this.discoveryClient;
-    }
-
 
     @PostMapping(value = "/payment/create")
     public CommonResult create(@RequestBody Payment payment) {

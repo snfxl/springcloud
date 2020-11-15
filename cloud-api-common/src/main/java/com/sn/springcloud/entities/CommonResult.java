@@ -32,10 +32,12 @@ public class CommonResult<T> {
 
     /**
      * 响应数据为null时的构造器
-     * @param code 响应状态码
+     *
+     * @param code    响应状态码
      * @param message 响应信息
      */
     public CommonResult(Integer code, String message) {
-        this(code, message, null);
+        this(code,message,null);
     }
+
 }

@@ -9,27 +9,34 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>cloud-constumer-order80</artifactId>
+    <artifactId>cloud-eureka-server7002</artifactId>
 
     <dependencies>
-
-        <!-- eureka client-->
+        <!--自己定义的 common 模块儿-->
         <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+            <groupId>com.sn.springcloud</groupId>
+            <artifactId>cloud-api-common</artifactId>
+            <version>${project.version}</version>
         </dependency>
 
-        <!-- spring boot相关 -->
+        <!-- eureka server-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
+        </dependency>
+
+        <!-- springboot web-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
 
-        <!-- 热部署工具 -->
+        <!-- 热部署-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
@@ -37,27 +44,11 @@
             <optional>true</optional>
         </dependency>
 
-        <!-- 自动生成getset方法-->
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <optional>true</optional>
-        </dependency>
-
-        <!-- springboot测试相关-->
+        <!-- test -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-
-        <!-- 导入工程中的公共模块 -->
-        <dependency>
-            <groupId>com.sn.springcloud</groupId>
-            <artifactId>cloud-api-common</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-
     </dependencies>
-
 </project>

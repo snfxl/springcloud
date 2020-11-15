@@ -20,7 +20,13 @@ import javax.annotation.Resource;
 @Slf4j
 public class OrderController {
 
-    public static final String PAYMENT_URL = "http://localhost:8001";
+    /**
+     * 单机版
+     * public static final String PAYMENT_URL = "http://localhost:8001";
+     *
+     * 集群版 要将消费者服务的访问地址写为 服务提供者的微服务名称
+     */
+    public static final String PAYMENT_SERVER_NAME = "http://CLOUD-PROVIDER-SERVICE";
 
     @Resource
     private RestTemplate restTemplate;
@@ -28,12 +34,12 @@ public class OrderController {
     @GetMapping("/consumer/payment/create")
     public CommonResult<Payment> create(Payment payment) {
 
-        return restTemplate.postForObject(PAYMENT_URL + "/payment/create", payment, CommonResult.class);
+        return restTemplate.postForObject(PAYMENT_SERVER_NAME + "/payment/create", payment, CommonResult.class);
     }
 
     @GetMapping("/consumer/payment/get/{id}")
     public CommonResult<Payment> getPayment(@PathVariable("id") Long id){
 
-        return restTemplate.getForObject(PAYMENT_URL + "/payment/get/" + id, CommonResult.class);
+        return restTemplate.getForObject(PAYMENT_SERVER_NAME + "/payment/get/" + id, CommonResult.class);
     }
 }
