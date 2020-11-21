@@ -29,6 +29,16 @@ public class PaymentController {
     @Value("${server.port}")
     private String serverPort;
 
+    /**
+     *
+     * @return 测试自己写的轮询算法
+     */
+    @GetMapping("/lb")
+    public String getServerPort(){
+
+        return serverPort;
+    }
+
     @PostMapping(value = "/payment/create")
     public CommonResult create(@RequestBody Payment payment) {
 

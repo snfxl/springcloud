@@ -1,0 +1,14 @@
+server:
+  port: 8006
+
+spring:
+  application:
+    name: cloud-providerConsul-Service
+  cloud:
+    consul:
+      #consul注册中心地址
+      host: localhost
+      port: 8500
+      #将自己注册进去
+      discovery:
+        service-name: ${spring.application.name}

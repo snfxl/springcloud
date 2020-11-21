@@ -1,0 +1,13 @@
+#端口号
+server:
+  port: 8004
+
+spring:
+  #服务名
+  application:
+    name: cloud-provider-service
+  cloud:
+    #zookeeper相关配置
+    zookeeper:
+      #zookeeper服务器地址
+      connect-string: 192.168.6.25:2181

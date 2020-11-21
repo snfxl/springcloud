@@ -1,0 +1,17 @@
+server:
+  port: 9001
+
+spring:
+  application:
+    name: nacos-provider
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848 #注册到nacos服务注册中心中
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*' #暴露监控端点 *表示监控所有
+

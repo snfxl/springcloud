@@ -40,6 +40,16 @@ public class PaymentController {
     private DiscoveryClient discoveryClient;
 
     /**
+     *
+     * @return 测试自己写的轮询算法
+     */
+    @GetMapping("/lb")
+    public String getServerPort(){
+
+        return serverPort;
+    }
+
+    /**
      * 获取当前服务注册中心所有微服务的信息
      * @return 返回当前服务注册中心所有的微服务信息
      */
