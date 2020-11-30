@@ -1,0 +1,33 @@
+server:
+  port: 2002
+
+spring:
+  application:
+    name: storage-service #服务名
+  datasource: #数据源
+    username: root
+    password: snbsnfxl
+    url: jdbc:mysql://localhost:3306/seata_storage?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=GMT%2B8
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  cloud:
+    alibaba:
+      seata:
+        tx-service-group: my_tx_group #自定义事务组名称 必须与file.conf中配置一致
+    nacos:
+      discovery:
+        server-addr: localhost:8848 #注册到nacos中
+
+feign:
+  sentinel:
+    enabled: true #开启feign对sentinel的支持
+
+logging:
+  level:
+    io:
+      seata: info #设置日志级别
+
+#自定义属性 mapper.xml放置的位置 用来自定义数据源时获取
+mybatis:
+  mapperLocations: classpath:mapper/*.xml
+
+
